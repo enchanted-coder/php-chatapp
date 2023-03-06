@@ -2,7 +2,7 @@
 
 ## What we need:
 
-    1. Atleast five webpages. Can be static:
+1. Atleast five webpages. Can be static:
         * Login page.
         * Registration page
         * Chat page
