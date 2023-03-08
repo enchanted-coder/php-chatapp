@@ -1,5 +1,7 @@
 # php-chatapp
 
+#### In connection.php, you will need to locally create a dotenv file and put your credentials accordingly
+
 ## What we need:
 
 1. Atleast five webpages. Can be static:
