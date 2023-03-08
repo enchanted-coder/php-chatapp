@@ -1,20 +1,20 @@
 <?php return array(
     'root' => array(
-        'name' => '__root__',
+        'name' => 'example/project',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '0b32cb3b33c17529ea1be183983a000e3ec62a44',
-        'type' => 'library',
+        'reference' => '97e3434ef9fedaf2529ee2735e58057337a4b5e3',
+        'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        '__root__' => array(
+        'example/project' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '0b32cb3b33c17529ea1be183983a000e3ec62a44',
-            'type' => 'library',
+            'reference' => '97e3434ef9fedaf2529ee2735e58057337a4b5e3',
+            'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
