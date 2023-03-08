@@ -1,4 +1,6 @@
 <?php
+
+// connect to the database using PDO
 $servername = "localhost";
 // dotenv will be implemented for these
 $username = "";
