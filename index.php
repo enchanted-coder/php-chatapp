@@ -1,7 +1,14 @@
 <?php
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 session_start();
-	$_SESSION;
-	
+	include("connection.php");
+	include("functions.php");
+
+$user_data = check_login($conn);
+
 ?>
 
 <html land="en">
