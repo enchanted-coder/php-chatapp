@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/vendor/autoload.php';
+
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
@@ -7,11 +9,11 @@ session_start();
 	include("connection.php");
 	include("functions.php");
 
-$user_data = check_login($conn);
+//$user_data = check_login($conn);
 
 ?>
 
-<html land="en">
+<html lang="en">
 	<head>
 		<title>ChatR</title>
 		<meta charset="UTF-8">
