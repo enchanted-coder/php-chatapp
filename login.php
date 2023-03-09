@@ -15,7 +15,12 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 	// if record of email is found in database
 	if($user){
 		if(password_verify($_POST["password"], $user["password_hash"])){
-			die("Login successful");
+
+			session_start();
+
+			$_SESSION["user_id"] = $user["id"];
+			header("Location: index.php");
+			exit;
 		}
 	}
 
