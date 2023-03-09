@@ -41,7 +41,8 @@ $stmt->bind_param("sss", $_POST["name"], $_POST["email"], $password_hash);
 
 if($stmt->execute()) {
 
-	echo "Signup successful";
+	header("Location: signup-success.html");
+	exit();
 
 }else{
 	if($mysqli->errno === 1062){
