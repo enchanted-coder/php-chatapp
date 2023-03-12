@@ -37,9 +37,15 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/x-icon" href="./assets/chat-bubbles.png">
     <link href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css" rel="stylesheet">
   </head>
   <body>
+
+    <div class ="icon" style="width:50px; height:50px; margin-right:100px; margin-left:0;" >
+      <img src="./assets/chat-bubbles.png" alt="flatart_icons">
+    </div>
 		<h1>Login</h1>
 		
 
