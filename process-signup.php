@@ -1,6 +1,6 @@
 <?php
 
-if(empty($_POST["name"])){
+if(empty($_POST["username"])){
 	die("Name is required");
 }
 
@@ -28,7 +28,7 @@ $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
 $mysqli = require __DIR__ . "/database.php";
 
-$sql = "INSERT INTO user (name, email, password_hash)
+$sql = "INSERT INTO users (username, email, password_hash)
 		VALUES (?, ?, ?)";
 
 $stmt = $mysqli->stmt_init();
@@ -37,7 +37,7 @@ if(!$stmt->prepare($sql)) {
 	die("SQL error: " . $mysqli->error);
 }
 
-$stmt->bind_param("sss", $_POST["name"], $_POST["email"], $password_hash);
+$stmt->bind_param("sss", $_POST["username"], $_POST["email"], $password_hash);
 
 if($stmt->execute()) {
 
