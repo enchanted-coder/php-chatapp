@@ -1,5 +1,6 @@
 <?php
 
+// server side validation starts here
 if(empty($_POST["username"])){
 	die("Name is required");
 }
@@ -23,11 +24,13 @@ if(!preg_match("/[0-9]/i", $_POST["password"])){
 if($_POST["password"] !== $_POST["password_confirmation"]){
 	die("passwords dont match");
 }
-
+// server side validation ends here
+// password hashing so that the user passwords are encrypted
 $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
 $mysqli = require __DIR__ . "/database.php";
 
+// inserting user signup data to database
 $sql = "INSERT INTO users (username, email, password_hash)
 		VALUES (?, ?, ?)";
 
