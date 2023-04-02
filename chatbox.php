@@ -1,25 +1,16 @@
 <?php
-if (isset($_POST['submit'])){
+	session_start();
+	if(isset($_SESSION["user_id"])) {
 
-  $mysqli = require __DIR__ . "./database.php"; 
-
-
-$username= mysqli_real_escape_string(
-	$mysqli, $_REQUEST['username']);
-$message = mysqli_real_escape_string(
-	$mysqli, $_REQUEST['message']);
-date_default_timezone_set('Africa/Nairobi');
-$timestamp=date('y-m-d h:ia');
-
-$sql = "INSERT INTO chats (username, message, timestamp)
-		VALUES ('$username', '$message', '$timestamp')";
-if(mysqli_query($mysqli, $sql)){
-	;
-} else{
-	echo "ERROR: Message not sent!!!";
-}
-mysqli_close($mysqli);
-}
+		$mysqli = require __DIR__ . "/database.php";
+	
+		$sql = "SELECT * FROM users
+				WHERE id = {$_SESSION["user_id"]}";
+	
+		$result = $mysqli->query($sql);
+	
+		$user = $result->fetch_assoc();
+	}
 ?>
 
 
@@ -41,6 +32,7 @@ mysqli_close($mysqli);
 		<header>
 			<div>
 				<h2>CHATBOX</h2>
+				<p>You are logged in as: <?= htmlspecialchars($user["username"])?></p>
 			</div>
 		</header>
 
@@ -48,80 +40,7 @@ mysqli_close($mysqli);
 
 <form id="myform" action="Group_chat.php" method="POST" >
 <div class="inner_div" id="chathist">
-<?php
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db_name = "chatr";
-$con = new mysqli($host, $user, $pass, $db_name);
 
-$query = "SELECT * FROM chats";
-$run = $con->query($query);
-$i=0;
-
-while($row = $run->fetch_array()) :
-if($i==0){
-$i=5;
-$first=$row;
-?>
-<div id="triangle1" class="triangle1"></div>
-<div id="message1" class="message1">
-<span style="color:white;float:right;">
-<?php echo $row['msg']; ?></span> <br/>
-<div>
-<span style="color:black;float:left;
-font-size:10px;clear:both;">
-	<?php echo $row['username']; ?>,
-		<?php echo $row['timestamp']; ?>
-</span>
-</div>
-</div>
-<br/><br/>
-<?php
-}
-else
-{
-if($row['username']!=$first['username'])
-{
-?>
-<div id="triangle" class="triangle"></div>
-<div id="message" class="message">
-<span style="color:white;float:left;">
-<?php echo $row['message']; ?>
-</span> <br/>
-<div>
-<span style="color:black;float:right;
-		font-size:10px;clear:both;">
-<?php echo $row['username']; ?>,
-		<?php echo $row['timestamp']; ?>
-</span>
-</div>
-</div>
-<br/><br/>
-<?php
-}
-else
-{
-?>
-<div id="triangle1" class="triangle1"></div>
-<div id="message1" class="message1">
-<span style="color:white;float:right;">
-<?php echo $row['message']; ?>
-</span> <br/>
-<div>
-<span style="color:black;float:left;
-		font-size:10px;clear:both;">
-<?php echo $row['username']; ?>,
-	<?php echo $row['datetime']; ?>
-</span>
-</div>
-</div>
-<br/><br/>
-<?php
-}
-}
-endwhile;
-?>
 </div>
 	<footer>
 		<table>
