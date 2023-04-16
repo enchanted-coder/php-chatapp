@@ -43,6 +43,18 @@ if(isset($_SESSION["user_id"])) {
 			<p><a href="login.php">Log in</a> or <a href="signup.html">Sign up</a></p>
 
 		<?php endif; ?>
+
+    <script>
+
+    var conn = new WebSocket('ws://localhost:8080');
+    conn.onopen = function(e) {
+        console.log("Connection established!");
+    };
+
+    conn.onmessage = function(e) {
+        console.log(e.data);
+    };
+    </script>
   
   
   </body>
